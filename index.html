@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camp Chaos Puppy Rescue</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--pine:#1d4a38;--pine2:#2c6b52;--red:#d8452e;--butter:#ffeaa8;--sky:#d9eef2;--paper:#fffdf6;--ink:#1c2a24;--line:#1d4a38;
+--h:"Fredoka","Arial Rounded MT Bold",ui-rounded,system-ui,sans-serif;--b:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media(prefers-color-scheme:dark){:root{--paper:#14211b;--butter:#2a2a14;--sky:#17302f;--ink:#f2efe0;--pine:#8fd1b0;--pine2:#8fd1b0;--line:#8fd1b0;--red:#ff7a62}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.05rem/1.65 var(--b)}
+h1,h2,h3{font-family:var(--h);line-height:1.1;color:var(--pine);margin:0 0 .5em}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:700}
+h2{font-size:clamp(1.7rem,4vw,2.4rem)}
+h3{font-size:1.3rem}
+a{color:var(--red)}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+p{max-width:65ch}
+/* nav */
+header{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:3px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 20px;max-width:1040px;margin:0 auto}
+.logo{font:700 1.3rem var(--h);color:var(--pine);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;font-size:1.2rem}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{font:500 1rem var(--h);color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:99px}
+nav a:hover{background:var(--butter)}
+nav a.on{background:var(--pine);color:var(--paper)}
+/* views */
+.view{display:none}.view.on{display:block}
+section{padding:56px 0}
+/* hero */
+.hero{background:var(--butter);border-bottom:3px solid var(--line);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding-top:56px;padding-bottom:56px}
+.hero p{font-size:1.2rem}
+.notice{display:inline-block;background:var(--paper);border:2px dashed var(--red);border-radius:12px;padding:8px 14px;font-weight:700;margin:0 0 20px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-block;font:700 1.05rem var(--h);text-decoration:none;padding:12px 22px;border-radius:12px;border:3px solid var(--line);background:var(--red);color:#fff;box-shadow:4px 4px 0 var(--line);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--line)}
+.btn.alt{background:var(--paper);color:var(--pine)}
+.polaroids{position:relative;height:340px}
+.pol{position:absolute;width:210px;background:#fff;padding:10px 10px 36px;border:2px solid var(--line);box-shadow:5px 5px 0 var(--line);font:500 1.1rem var(--h);color:#1c2a24;text-align:center}
+.pol img{width:100%;height:190px;object-fit:cover;display:block;background:var(--sky)}
+.pol.a{left:0;top:10px;transform:rotate(-6deg)}
+.pol.b{right:0;top:60px;transform:rotate(5deg)}
+/* paths */
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.path{display:block;text-decoration:none;color:var(--ink);background:var(--sky);border:3px solid var(--line);border-radius:18px;padding:24px}
+.path:nth-child(2){background:var(--butter)}
+.path:nth-child(3){background:#ffd9d0}
+.path:hover{box-shadow:5px 5px 0 var(--line)}
+.path p{margin:0}
+.band{background:var(--pine);color:#fff;text-align:center}
+.band h2{color:#fff}.band p{margin:0 auto 20px}
+/* animals */
+.animals{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.card{border:3px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper)}
+.card img{width:100%;height:240px;object-fit:cover;display:block;background:var(--sky)}
+.card div{padding:18px}
+.tag{display:inline-block;background:var(--butter);border:2px solid var(--line);border-radius:99px;padding:0 10px;font:500 .9rem var(--h);color:var(--ink);margin-bottom:8px}
+/* steps */
+.steps{list-style:none;padding:0;margin:0;counter-reset:s;display:grid;gap:16px}
+.steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start;border-left:6px solid var(--red);padding:4px 0 4px 16px}
+.steps li::before{content:counter(s);font:700 1.6rem var(--h);color:var(--red);min-width:1.4rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.box{background:var(--sky);border:3px solid var(--line);border-radius:18px;padding:24px}
+.empty{text-align:center;padding:48px 20px;border:3px dashed var(--line);border-radius:18px;background:var(--butter)}
+.pageh{background:var(--sky);border-bottom:3px solid var(--line);padding:48px 0 32px}
+.pageh p{font-size:1.15rem;margin:0}
+footer{background:var(--pine);color:#fff;padding:32px 0;font-size:.95rem}
+footer a{color:var(--butter)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:760px){.hero .wrap,.two,.paths{grid-template-columns:1fr}.polaroids{height:300px}.pol{width:170px}.pol img{height:150px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<a class="logo" href="#home"><b>🐾</b>Camp Chaos</a>
+<nav aria-label="Main">
+<a href="#home">Home</a><a href="#animals">Animals</a><a href="#adopt">Adopt</a><a href="#foster">Foster</a><a href="#events">Events</a><a href="#help">Ways to help</a><a href="#contact">Contact</a>
+</nav></div></header>
+
+<main>
+<!-- HOME -->
+<div class="view" id="home">
+<div class="hero"><div class="wrap">
+<div>
+<p class="notice">New email: campchaospuppyrescue@outlook.com</p>
+<h1>Puppies and cats looking for their forever people.</h1>
+<p>Many litters are coming into rescue right now and every one of them needs a home. Apply before you meet us, and your future best friend gets home faster.</p>
+<div class="btns"><a class="btn" href="#adopt">Adopt a pet</a><a class="btn alt" href="#foster">Become a foster</a></div>
+</div>
+<div class="polaroids" aria-hidden="true">
+<div class="pol a"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/12645/12645754/54532330.jpg?width=500" alt="">Fosters needed</div>
+<div class="pol b"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22542/22542012/103328621.jpg?width=500" alt="">Vermont</div>
+</div>
+</div></div>
+
+<section><div class="wrap">
+<h2>Where do you want to start?</h2>
+<div class="paths">
+<a class="path" href="#adopt"><h3>Adopt</h3><p>Find out how adoption works and what to send us before an event.</p></a>
+<a class="path" href="#foster"><h3>Foster</h3><p>Give a litter a safe home for a while. We stay in touch the whole way.</p></a>
+<a class="path" href="#help"><h3>Help another way</h3><p>Shop at Chewy and Camp Chaos earns donations.</p></a>
+</div></div></section>
+
+<section class="band"><div class="wrap">
+<h2>Meet our past Camp Chaos pups</h2>
+<p>We love seeing adopted pups at our events. Stop by, say hello, and meet new puppies who are waiting for a family.</p>
+<a class="btn alt" href="#events">See upcoming events</a>
+</div></section>
+</div>
+
+<!-- ANIMALS -->
+<div class="view" id="animals">
+<div class="pageh"><div class="wrap"><h1>Animals</h1><p>A few of the animals we are featuring right now.</p></div></div>
+<section><div class="wrap">
+<div class="animals">
+<article class="card"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/12645/12645754/54532330.jpg?width=500" alt="Foster listing"><div>
+<span class="tag">Foster</span><h3>Foster a dog</h3>
+<p>Interested in fostering? Submit an application and choose “Foster” as the animal name. This alerts our rescue and we will contact you.</p>
+<a href="#foster-dog">Read the full listing</a></div></article>
+<article class="card"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22542/22542012/103328621.jpg?width=500" alt="Vermont"><div>
+<span class="tag">Cat</span><h3>Vermont</h3>
+<p>The adult cat adoption fee is $125. It covers spay/neuter, microchip, vet exam, fecal test, FeLV/FIV test, and current vaccinations (FVRCP and rabies).</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22542012">Read Vermont’s listing</a></div></article>
+</div>
+<p style="margin-top:32px"><a class="btn" href="https://www.campchaospuppyrescue.org/animals">Browse every animal</a></p>
+</div></section></div>
+
+<!-- ADOPT -->
+<div class="view" id="adopt">
+<div class="pageh"><div class="wrap"><h1>Adopt</h1><p>Puppies draw crowds at events. A little prep makes the day smoother for you and our volunteers.</p></div></div>
+<section><div class="wrap two">
+<div><h2>Before an event</h2>
+<ol class="steps">
+<li><div><b>Submit your adoption application.</b><br>Send it before the event so we can review it ahead of time.</div></li>
+<li><div><b>Send vet records for your current pets.</b><br>Include them with your application.</div></li>
+<li><div><b>Come meet us and be patient.</b><br>Our volunteers and staff will get to everyone.</div></li>
+</ol></div>
+<div class="box"><h3>Adopting a cat?</h3>
+<p>Adult cats are $125. That includes spay/neuter, microchip, vet exam, fecal test, FeLV/FIV test, and current FVRCP and rabies vaccines.</p>
+<p>Cats have their own application, linked on the <a href="https://www.campchaospuppyrescue.org/">main site</a>.</p>
+<a class="btn" href="https://www.campchaospuppyrescue.org/animals">See available animals</a></div>
+</div></section></div>
+
+<!-- FOSTER -->
+<div class="view" id="foster">
+<div class="pageh"><div class="wrap"><h1>Foster</h1><p>We are always looking for new foster homes.</p></div></div>
+<section><div class="wrap two">
+<div><h2>How to sign up</h2>
+<ol class="steps">
+<li><div><b>Fill out the dog application.</b></div></li>
+<li><div><b>Pick “Foster” as the animal name.</b></div></li>
+<li><div><b>Wait for our email.</b><br>We will reach out with more information.</div></li>
+</ol></div>
+<div class="box"><h3>Ready to start?</h3><p>Submitting the application notifies our rescue right away.</p>
+<a class="btn" href="#foster-dog">Open the foster listing</a></div>
+</div></section></div>
+
+<!-- FOSTER DOG -->
+<div class="view" id="foster-dog">
+<div class="pageh"><div class="wrap"><p><a href="#animals">Back to all animals</a></p><h1>FOSTER</h1><p>Unknown breed. Dog. Available for adoption.</p></div></div>
+<section><div class="wrap two">
+<div class="card"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/12645/12645754/54532330.jpg?width=500" alt="FOSTER the dog"><div><h3>I would love you more than you can imagine.</h3><p>Please adopt me!</p></div></div>
+<div class="box"><h3>About FOSTER</h3>
+<p><b>Status:</b> Available for adoption<br><b>Species:</b> Dog<br><b>Location:</b> 1221 Water Tower Place, Arnold, MO 63010, <a href="tel:6362873909">(636) 287-3909</a></p>
+<p>Interested in fostering? Submit an application and choose “Foster” as the animal name. Submitting it notifies our rescue, and we will contact you to move forward.</p>
+<div class="btns"><a class="btn" href="https://www.campchaospuppyrescue.org/info/adoption">Adoption info</a><a class="btn alt" href="http://www.petbond.com/flyerentry.php?pid=12645754">Print a flyer</a></div></div>
+</div></section></div>
+
+<!-- EVENTS -->
+<div class="view" id="events">
+<div class="pageh"><div class="wrap"><h1>Events</h1><p>Adoption events are where you meet the dogs and cats in person.</p></div></div>
+<section><div class="wrap">
+<div class="empty"><h2>No events scheduled right now</h2>
+<p style="margin:0 auto 20px">Check back soon, or follow us on Facebook to hear about new events first.</p>
+<a class="btn" href="https://www.facebook.com/campchaospuppyrescue">Follow on Facebook</a></div>
+</div></section></div>
+
+<!-- HELP -->
+<div class="view" id="help">
+<div class="pageh"><div class="wrap"><h1>Ways to help</h1><p>Not ready to adopt? You can still make a difference.</p></div></div>
+<section><div class="wrap two">
+<div class="box"><h3>Shop at Chewy</h3><p>Order pet food from Chewy through our page and Camp Chaos earns donations.</p>
+<a class="btn" href="https://www.chewy.com/g/camp-chaos-puppy-rescue_b72115724">Shop and give back</a></div>
+<div class="box"><h3>Foster a litter</h3><p>Fostering frees up space so we can take in more animals.</p>
+<a class="btn alt" href="#foster">How fostering works</a></div>
+</div></section></div>
+
+<!-- CONTACT -->
+<div class="view" id="contact">
+<div class="pageh"><div class="wrap"><h1>Contact</h1><p>Our email address has changed. Please use the new one.</p></div></div>
+<section><div class="wrap two">
+<div class="box"><h3>Email</h3><p><a href="mailto:campchaospuppyrescue@outlook.com">campchaospuppyrescue@outlook.com</a></p>
+<h3>Phone</h3><p><a href="tel:3147757223">314-775-7223</a></p></div>
+<div class="box"><h3>Follow along</h3><p>Photos, event news, and happy-tail updates live on Facebook.</p>
+<a class="btn" href="https://www.facebook.com/campchaospuppyrescue">Camp Chaos on Facebook</a></div>
+</div></section></div>
+</main>
+
+<footer><div class="wrap">
+<span>© 2026 Camp Chaos Puppy Rescue</span>
+<span><a href="mailto:campchaospuppyrescue@outlook.com">campchaospuppyrescue@outlook.com</a> · <a href="tel:3147757223">314-775-7223</a></span>
+</div></footer>
+
+<script>
+(function(){
+  var views=document.querySelectorAll('.view'),links=document.querySelectorAll('nav a');
+  function show(){
+    var id=(location.hash||'#home').slice(1);
+    if(!document.getElementById(id))id='home';
+    views.forEach(function(v){v.classList.toggle('on',v.id===id)});
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)});
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',show);show();
+})();
+</script>
+</body>
+</html>
