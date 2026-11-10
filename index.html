@@ -61,6 +61,8 @@ section{padding:56px 0}
 .card img{width:100%;height:240px;object-fit:cover;display:block;background:var(--sky)}
 .card div{padding:18px}
 .tag{display:inline-block;background:var(--butter);border:2px solid var(--line);border-radius:99px;padding:0 10px;font:500 .9rem var(--h);color:var(--ink);margin-bottom:8px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.filters button{font:500 1rem var(--h);color:var(--ink);background:var(--paper);border:2px solid var(--line);border-radius:99px;padding:6px 18px;cursor:pointer}.filters button:hover{background:var(--butter)}.filters button.on{background:var(--pine);color:var(--paper)}
+.card .nophoto{height:240px;display:grid;place-items:center;font-size:4rem;background:var(--sky);padding:0}
 /* steps */
 .steps{list-style:none;padding:0;margin:0;counter-reset:s;display:grid;gap:16px}
 .steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start;border-left:6px solid var(--red);padding:4px 0 4px 16px}
@@ -117,19 +119,62 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <!-- ANIMALS -->
 <div class="view" id="animals">
-<div class="pageh"><div class="wrap"><h1>Animals</h1><p>12 animals are available for adoption right now. Here are two we are featuring.</p></div></div>
+<div class="pageh"><div class="wrap"><h1>Animals</h1><p>12 animals are available for adoption right now.</p></div></div>
 <section><div class="wrap">
+<div class="filters" role="group" aria-label="Filter animals">
+<button type="button" class="on" data-f="all" aria-pressed="true">All</button><button type="button" data-f="Dog" aria-pressed="false">Dogs</button><button type="button" data-f="Cat" aria-pressed="false">Cats</button>
+</div>
 <div class="animals">
-<article class="card"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/12645/12645754/54532330.jpg?width=500" alt="Foster listing"><div>
+<article class="card" data-species="Dog"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/12645/12645754/54532330.jpg?width=500" alt="Foster listing" loading="lazy"><div>
 <span class="tag">Foster</span><h3>Foster a dog</h3>
 <p>Interested in fostering? Submit an application and choose “Foster” as the animal name. This alerts our rescue and we will contact you.</p>
 <a href="#foster-dog">Read the full listing</a></div></article>
-<article class="card"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22542/22542012/103328621.jpg?width=500" alt="Vermont"><div>
+<article class="card" data-species="Dog"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22852/22852480/104038371.jpg?width=500" alt="BooBoo the dog" loading="lazy"><div>
+<span class="tag">Dog</span><h3>BooBoo</h3>
+<p>Male · Border Collie / Mixed</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22852480">Read BooBoo’s listing</a></div></article>
+<article class="card" data-species="Dog"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22852/22852481/104038396.jpg?width=500" alt="Burton the dog" loading="lazy"><div>
+<span class="tag">Dog</span><h3>Burton</h3>
+<p>Male · Border Collie / Mixed</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22852481">Read Burton’s listing</a></div></article>
+<article class="card" data-species="Dog"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22780/22780465/104038268.jpg?width=500" alt="Chianti the dog" loading="lazy"><div>
+<span class="tag">Dog</span><h3>Chianti</h3>
+<p>Female · Husky</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22780465">Read Chianti’s listing</a></div></article>
+<article class="card" data-species="Cat"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22613/22613293/103752265.jpg?width=500" alt="Brioche the cat" loading="lazy"><div>
+<span class="tag">Cat</span><h3>Brioche</h3>
+<p>Male · Domestic Short Hair / Mixed</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22613293">Read Brioche’s listing</a></div></article>
+<article class="card" data-species="Cat"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22613/22613307/103752308.jpg?width=500" alt="Challah the cat" loading="lazy"><div>
+<span class="tag">Cat</span><h3>Challah</h3>
+<p>Male · Domestic Short Hair / Mixed</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22613307">Read Challah’s listing</a></div></article>
+<article class="card" data-species="Cat"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22613/22613304/103752434.jpg?width=500" alt="Ciabatta the cat" loading="lazy"><div>
+<span class="tag">Cat</span><h3>Ciabatta</h3>
+<p>Female · Domestic Short Hair / Mixed</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22613304">Read Ciabatta’s listing</a></div></article>
+<article class="card" data-species="Cat"><div class="nophoto" aria-hidden="true">🐾</div><div>
+<span class="tag">Cat</span><h3>Fettuccine</h3>
+<p>Female · Domestic Short Hair / Mixed</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22804777">Read Fettuccine’s listing</a></div></article>
+<article class="card" data-species="Cat"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22542/22542013/103328618.jpg?width=500" alt="North the cat" loading="lazy"><div>
+<span class="tag">Cat</span><h3>North</h3>
+<p>Female · Domestic Short Hair / Mixed</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22542013">Read North’s listing</a></div></article>
+<article class="card" data-species="Cat"><div class="nophoto" aria-hidden="true">🐾</div><div>
+<span class="tag">Cat</span><h3>Ravioli</h3>
+<p>Male · Domestic Short Hair / Mixed</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22804773">Read Ravioli’s listing</a></div></article>
+<article class="card" data-species="Cat"><div class="nophoto" aria-hidden="true">🐾</div><div>
+<span class="tag">Cat</span><h3>Spaghetti</h3>
+<p>Female · Domestic Short Hair / Mixed</p>
+<a href="https://www.campchaospuppyrescue.org/animals/detail?AnimalID=22804775">Read Spaghetti’s listing</a></div></article>
+<article class="card" data-species="Cat"><img src="https://cdn.rescuegroups.org/7947/pictures/animals/22542/22542012/103328621.jpg?width=500" alt="Vermont the cat" loading="lazy"><div>
 <span class="tag">Cat</span><h3>Vermont</h3>
-<p>The adult cat adoption fee is $125. It covers spay/neuter, microchip, vet exam, fecal test, FeLV/FIV test, and current vaccinations (FVRCP and rabies).</p>
+<p>Female · Domestic Short Hair / Mixed</p>
 <a href="#vermont">Read Vermont’s listing</a></div></article>
 </div>
-<div class="btns" style="margin-top:32px"><a class="btn" href="https://www.campchaospuppyrescue.org/animals/browse?Status=Available">Browse every animal</a><a class="btn alt" href="https://www.campchaospuppyrescue.org/animals/list?Status=Available">See the list view</a><a class="btn alt" href="https://www.campchaospuppyrescue.org/animals/search">Search animals</a></div>
+<div class="btns" style="margin-top:32px"><a class="btn" href="https://www.campchaospuppyrescue.org/animals/browse?Status=Available">Browse on the main site</a><a class="btn alt" href="https://www.campchaospuppyrescue.org/animals/search">Search animals</a></div>
 </div></section></div>
 
 <!-- ADOPT -->
@@ -263,6 +308,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     try{history.replaceState(null,'','#'+id)}catch(err){}
   });
   window.addEventListener('hashchange',fromHash);fromHash();
+  var fb=document.querySelectorAll('.filters button'),cards=document.querySelectorAll('#animals .card');
+  fb.forEach(function(b){b.addEventListener('click',function(){
+    var s=b.getAttribute('data-f');
+    fb.forEach(function(x){x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});
+    cards.forEach(function(c){c.hidden=!(s==='all'||c.getAttribute('data-species')===s)});
+  })});
 })();
 </script>
 </body>
