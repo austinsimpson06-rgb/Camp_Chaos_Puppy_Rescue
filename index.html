@@ -225,14 +225,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <script>
 (function(){
   var views=document.querySelectorAll('.view'),links=document.querySelectorAll('nav a');
-  function show(){
-    var id=(location.hash||'#home').slice(1);
+  function show(id){
     if(!document.getElementById(id))id='home';
     views.forEach(function(v){v.classList.toggle('on',v.id===id)});
     links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)});
     window.scrollTo(0,0);
   }
-  window.addEventListener('hashchange',show);show();
+  function fromHash(){show((location.hash||'#home').slice(1))}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a)return;
+    var id=a.getAttribute('href').slice(1);
+    if(!id||!document.getElementById(id))return;
+    e.preventDefault();
+    show(id);
+    try{history.replaceState(null,'','#'+id)}catch(err){}
+  });
+  window.addEventListener('hashchange',fromHash);fromHash();
 })();
 </script>
 </body>
